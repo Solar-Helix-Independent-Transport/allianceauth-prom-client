@@ -1,15 +1,25 @@
 from flask import Flask
-import redis
-from prometheus_redis_client import REGISTRY, Counter
 
-REGISTRY.set_redis(redis.from_url("redis://localhost:6379/3"))
-ESI_BUCKET = Counter('esi_request', 'Esi Requests and response codes',
-                     labelnames=["endpoint", "status_code"])
+import redis
+from prometheus_redis_client import REGISTRY
+
+from aaprom.collectors import load_all
+
+try:
+    load_all()
+except:
+    pass
+
+## Needs to match the local.py setting this is not django so we dont expose metrics
+r = redis.from_url("redis://localhost:6379/3") 
+r.flushdb() # Cleanup at startup
+
+REGISTRY.set_redis(r)
 
 app = Flask(__name__)
 
-@app.route("/metrics")
-@app.route("/")
+@app.route("/metrics") # Prometh uses this
+@app.route("/") # i am lazy and ue this for debug
 def prom_export():
     return REGISTRY.output()
 

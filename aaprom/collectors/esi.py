@@ -2,9 +2,9 @@ from prometheus_redis_client import Histogram, Counter
 from ..utils import PowersOf
 
 DEFAULT_LATENCY_BUCKETS = (
-    0.25,
-    0.5,
-    0.75,
+    0.025,
+    0.05,
+    0.075,
     0.1,
     0.15,
     0.2,

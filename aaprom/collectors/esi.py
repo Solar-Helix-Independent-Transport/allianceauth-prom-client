@@ -50,6 +50,6 @@ esi_bucket = Counter(
 esi_latency_by_endpoint = Histogram(
     "esi_requests_latency_by_endpoint_seconds",
     "Histogram of request processing time labelled by view.",
-    labelnames=["endpoint"],
+    labelnames=["endpoint", "status_code"],
     buckets=DEFAULT_LATENCY_BUCKETS
 )

@@ -10,7 +10,13 @@ local.py add:
 ```
 PROMETHEUS_REDIS_URI = os.environ.get("PROMETHEUS_REDIS_URI", "redis://localhost:6379/3")
 ```
-
+update your middleware either override in local.py or base.py
+```MIDDLEWARE = [
+    'aaprom.middleware.PrometheusBeforeMiddleware',  # First
+......... existing middlewears
+    'aaprom.middleware.PrometheusAfterMiddleware',   # Last
+]
+```
 ```bash
 gunicorn --bind localhost:8099 prom_exporter:app
 ```

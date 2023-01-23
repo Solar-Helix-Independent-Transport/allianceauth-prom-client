@@ -10,15 +10,27 @@ local.py add:
 ```
 PROMETHEUS_REDIS_URI = os.environ.get("PROMETHEUS_REDIS_URI", "redis://localhost:6379/3")
 ```
-update your middleware either override in local.py or base.py
+
+Update your middleware either override in local.py or base.py
 ```MIDDLEWARE = [
     'aaprom.middleware.PrometheusBeforeMiddleware',  # First
 ......... existing middlewears
     'aaprom.middleware.PrometheusAfterMiddleware',   # Last
 ]
 ```
+
+use this command to run the metric endpoint. ( can be added as a new supervisor program )
 ```bash
 gunicorn --bind localhost:8099 prom_exporter:app
+```
+
+add prometheus scrape config
+```yaml
+  - job_name: "auth"
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+    static_configs:
+      - targets: ["localhost:8099"]
 ```
 
 This module is a modified copy of

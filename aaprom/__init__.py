@@ -6,6 +6,6 @@ https://github.com/korfuri/django-prometheus
 """
 __all__ = ["middleware"]
 
-__version__ = "0.0.1a5"
+__version__ = "0.0.1a6"
 
 default_app_config = "aaprom.apps.AllianceAuthPrometheusConfig"

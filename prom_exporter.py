@@ -11,7 +11,7 @@ except:
     pass
 
 ## Needs to match the local.py setting this is not django so we dont expose metrics
-r = redis.from_url("redis://localhost:6379/3") 
+r = redis.from_url("redis://localhost:6379/3")
 r.flushdb() # Cleanup at startup
 
 REGISTRY.set_redis(r)

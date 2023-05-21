@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
 from aaprom import __version__
 setup(
-    name="aaprom",
+    name="allianceauth-prometheus-exporter",
     version=__version__,
     author="AaronKable",
     author_email="aaronkable@gamil.com",
-    description="Export auth metrics for Prometheus.",
+    description="Export Alliance Auth metrics to Prometheus.",
     license="Apache",
     keywords="allianceauth monitoring prometheus",
     packages=find_packages(),

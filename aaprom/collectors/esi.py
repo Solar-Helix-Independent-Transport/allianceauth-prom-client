@@ -1,4 +1,4 @@
-from prometheus_redis_client import Histogram, Counter
+from prometheus_redis_client import Histogram, Counter, Gauge
 from ..utils import PowersOf
 
 DEFAULT_LATENCY_BUCKETS = (
@@ -54,4 +54,9 @@ esi_latency_by_endpoint = Histogram(
     "Histogram of request processing time labelled by view.",
     labelnames=["endpoint", "status_code"],
     buckets=DEFAULT_LATENCY_BUCKETS
+)
+
+esi_error_bucket = Gauge(
+    "esi_error_bucket_avail",
+    "Errors remaining in the ESI error bucket"
 )

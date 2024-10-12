@@ -1,4 +1,4 @@
-from prometheus_redis_client import Histogram, Counter, Gauge
+from prometheus_redis_client import Histogram, Counter, CommonGauge
 from ..utils import PowersOf
 
 DEFAULT_LATENCY_BUCKETS = (
@@ -56,7 +56,7 @@ esi_latency_by_endpoint = Histogram(
     buckets=DEFAULT_LATENCY_BUCKETS
 )
 
-esi_error_bucket = Gauge(
+esi_error_bucket = CommonGauge(
     "esi_error_bucket_avail",
     "Errors remaining in the ESI error bucket"
 )

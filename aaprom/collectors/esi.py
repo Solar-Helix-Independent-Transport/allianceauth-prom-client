@@ -64,5 +64,6 @@ esi_error_bucket = CommonGauge(
 esi_rate_bucket = CommonGauge(
     "esi_rate_bucket",
     "Rate bucket remaining",
-    labelnames=["bucket"]
+    labelnames=["bucket"],
+    expire=60*15
 )

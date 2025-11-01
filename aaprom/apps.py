@@ -1,8 +1,11 @@
+import logging
 import redis
 from django.apps import AppConfig
 from django.conf import settings
 
 from prometheus_redis_client import REGISTRY
+
+logger = logging.getLogger(__name__)
 
 # Load all the prom models
 import aaprom
@@ -26,4 +29,11 @@ class AllianceAuthPrometheusConfig(AppConfig):
         try:
             import aaprom.celery
         except Exception as e:
-            pass
+            logger.error(e)
+        
+        # load the esi signal client.
+        try:
+            import aaprom.esi
+        except Exception as e:
+            logger.error(e)
+

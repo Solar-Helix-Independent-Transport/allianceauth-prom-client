@@ -60,3 +60,9 @@ esi_error_bucket = CommonGauge(
     "esi_error_bucket_avail",
     "Errors remaining in the ESI error bucket"
 )
+
+esi_rate_bucket = CommonGauge(
+    "esi_rate_bucket",
+    "Rate bucket remaining",
+    labelnames=["bucket"]
+)

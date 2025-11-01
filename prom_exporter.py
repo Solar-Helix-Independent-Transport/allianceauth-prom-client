@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, make_response
 
 import redis
 from prometheus_redis_client import REGISTRY
@@ -21,7 +21,9 @@ app = Flask(__name__)
 @app.route("/metrics") # Prometh uses this
 @app.route("/") # i am lazy and ue this for debug
 def prom_export():
-    return REGISTRY.output()
+    response = make_response(REGISTRY.output(), 200)
+    response.mimetype = "text/plain"
+    return response
 
 if __name__ == "__main__":
-    app.run()
+    app.run(port=8099)

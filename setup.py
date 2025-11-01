@@ -10,6 +10,7 @@ setup(
     keywords="allianceauth monitoring prometheus",
     packages=find_packages(),
     install_requires=[
+        "django-esi>=8.0.0b2"
     ],
     classifiers=[
         "Development Status :: 5 - Production/Stable",

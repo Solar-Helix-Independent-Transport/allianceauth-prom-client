@@ -2,7 +2,6 @@
 
 ```python
 pip install prometheus-redis-client flask
-pip install -U git+https://gitlab.com/aaronkable/django-esi.git@prom_full
 wget https://raw.githubusercontent.com/Solar-Helix-Independent-Transport/allianceauth-prom-client/master/prom_exporter.py
 ```
 

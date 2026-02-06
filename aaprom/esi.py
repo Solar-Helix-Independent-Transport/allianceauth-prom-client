@@ -18,9 +18,13 @@ def esi_callback(sender, operation, status_code, headers, latency, bucket, **kwa
     )
     ## Total Counts
     try:
+        compat_date = headers.get("x-compatibility-date", "unknown")
+        cache_status = headers.get("x-esi-cache-status", "unknown")
         esi_bucket.labels(
         endpoint=operation,
-        status_code=status_code
+        status_code=status_code,
+        compatibility_date=compat_date,
+        cache_status=cache_status
         ).inc()
     except Exception as e:
         logger.error(e)

@@ -46,7 +46,7 @@ DEFAULT_LATENCY_BUCKETS = (
 esi_bucket = Counter(
     'esi_request_total',
     'Esi Requests and response codes',
-    labelnames=["endpoint", "status_code"]
+    labelnames=["endpoint", "status_code", "compatibility_date", "cache_status"]
 )
 
 esi_latency_by_endpoint = Histogram(

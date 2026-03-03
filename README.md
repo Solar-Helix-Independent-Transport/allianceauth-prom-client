@@ -1,6 +1,7 @@
-# Auth Prom Exported
+# Auth Prom Exporter
 
 Prom Exporter and Web Server for and Auth Instance with redis as a backend
+
 ## Why? 
 Because metrics are sometimes very helpful!
 ## How?

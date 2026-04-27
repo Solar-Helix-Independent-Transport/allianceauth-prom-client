@@ -1,19 +1,10 @@
 from prometheus_redis_client import Histogram, Counter, CommonGauge
-from ..utils import PowersOf
 
 DEFAULT_LATENCY_BUCKETS = (
-    0.025,
-    0.050,
-    0.075,
-    0.100,
     0.200,
-    0.300,
     0.400,
-    0.500,
     0.600,
-    0.700,
     0.800,
-    0.900,
     1.000,
     2.000,
     3.000,

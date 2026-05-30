@@ -1,4 +1,4 @@
-from prometheus_redis_client import Histogram
+from aaprom.redis_metrics import Histogram
 
 DEFAULT_LATENCY_BUCKETS = (
     0.200,

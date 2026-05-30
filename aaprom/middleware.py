@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.utils.deprecation import MiddlewareMixin
-from prometheus_redis_client import Counter, Histogram
+from aaprom.redis_metrics import Counter, Histogram
 
 from aaprom.utils import PowersOf, Time, TimeSince
 

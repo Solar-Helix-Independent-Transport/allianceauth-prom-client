@@ -1,4 +1,4 @@
-from prometheus_redis_client import Histogram, Counter
+from aaprom.redis_metrics import Histogram, Counter
 from ..utils import PowersOf
 
 # *********************************************************************************************************

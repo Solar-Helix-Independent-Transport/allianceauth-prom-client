@@ -1,7 +1,7 @@
 from flask import Flask, make_response
 
 import redis
-from prometheus_redis_client import REGISTRY
+from aaprom.redis_metrics import REGISTRY
 
 from aaprom.collectors import load_all
 

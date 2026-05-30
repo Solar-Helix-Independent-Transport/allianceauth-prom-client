@@ -3,7 +3,7 @@ import redis
 from django.apps import AppConfig
 from django.conf import settings
 
-from prometheus_redis_client import REGISTRY
+from aaprom.redis_metrics import REGISTRY
 
 logger = logging.getLogger(__name__)
 

@@ -18,13 +18,12 @@ wget https://raw.githubusercontent.com/Solar-Helix-Independent-Transport/allianc
 
 #### Baremetal 
 ```python
-pip install prometheus-redis-client flask
+pip install flask
 pip install git+https://github.com/Solar-Helix-Independent-Transport/allianceauth-prom-client.git
 ```
 #### Docker 
 add to requirements.txt
 ```
-prometheus-redis-client
 flask
 allianceauth-prometheus-exporter @ git+https://github.com/Solar-Helix-Independent-Transport/allianceauth-prom-client.git
 ```

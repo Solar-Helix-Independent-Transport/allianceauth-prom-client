@@ -8,6 +8,7 @@ Because metrics are sometimes very helpful!
 - All esi requests throw a [signal](https://gitlab.com/allianceauth/django-esi/-/blob/master/esi/signals.py?ref_type=heads#L13) that this app catches and then the important data is stored in redis for export to the prometheus scraper.
 - All Celery task stats (failed/success, time etc) are exported to metrics for the prometheus scraper.
 - All Auth webpage metrics are are exported for the prometheus exporter.
+- If [aa-wh-mapper](https://github.com/Solar-Helix-Independent-Transport/aa-wh-mapper) is installed, its `map_changed` signal is caught and counted, and a periodic task exports the number of currently-active maps/users (see below).
 
 ### Install 
 1. From your venv and in my auth
@@ -48,7 +49,16 @@ MIDDLEWARE = [
 ]
 ```
 
-5. use this command to run the metric endpoint. ( can be added as a new supervisor program, or docker compose container )
+5. If you have [aa-wh-mapper](https://github.com/Solar-Helix-Independent-Transport/aa-wh-mapper) installed and want the `wh_mapper_active_maps` / `wh_mapper_active_users` gauges, these are DB-derived so they're refreshed by a periodic task rather than pushed live. Add a schedule entry in `local.py`:
+```python
+CELERYBEAT_SCHEDULE['aaprom_update_wh_mapper_gauges'] = {
+    'task': 'aaprom.tasks.update_wh_mapper_gauges',
+    'schedule': crontab(minute='*'),
+}
+```
+(This is a no-op if aa-wh-mapper isn't installed, so it's safe to add unconditionally.)
+
+6. use this command to run the metric endpoint. ( can be added as a new supervisor program, or docker compose container )
 ```bash
 gunicorn --bind localhost:8099 prom_exporter:app
 ```

@@ -37,3 +37,9 @@ class AllianceAuthPrometheusConfig(AppConfig):
         except Exception as e:
             logger.error(e)
 
+        # load the wh_mapper signal client, if aa-wh-mapper is installed.
+        try:
+            import aaprom.wh_mapper
+        except Exception as e:
+            logger.error(e)
+

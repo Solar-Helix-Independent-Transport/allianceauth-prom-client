@@ -48,7 +48,7 @@ MIDDLEWARE = [
 ]
 ```
 
-5. If you have [aa-wh-mapper](https://github.com/Solar-Helix-Independent-Transport/aa-wh-mapper) installed and want the `wh_mapper_active_maps` / `wh_mapper_active_users` gauges, these are DB-derived so they're refreshed by a periodic task rather than pushed live. Add a schedule entry in `local.py`:
+5. If you have [aa-wh-mapper](https://github.com/Solar-Helix-Independent-Transport/aa-wh-mapper) installed and want the `wh_mapper_active_maps` / `wh_mapper_active_users` / `wh_mapper_tracked_characters` gauges, these are DB-derived so they're refreshed by a periodic task rather than pushed live. Add a schedule entry in `local.py`:
 ```python
 CELERYBEAT_SCHEDULE['aaprom_update_wh_mapper_gauges'] = {
     'task': 'aaprom.tasks.update_wh_mapper_gauges',

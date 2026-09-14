@@ -27,3 +27,9 @@ wh_mapper_active_users = CommonGauge(
     "Number of distinct users with at least one open MapPresence (websocket) connection",
     expire=60 * 15
 )
+
+wh_mapper_tracked_characters = CommonGauge(
+    "wh_mapper_tracked_characters",
+    "Number of aa-wh-mapper TrackedCharacter rows with is_active=True",
+    expire=60 * 15
+)

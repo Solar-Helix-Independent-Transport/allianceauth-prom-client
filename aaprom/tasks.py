@@ -16,9 +16,13 @@ def update_wh_mapper_gauges():
     if not apps.is_installed("wh_mapper"):
         return
 
-    from wh_mapper.models import MapPresence
+    from wh_mapper.models import MapPresence, TrackedCharacter
 
-    from .collectors.wh_mapper import wh_mapper_active_maps, wh_mapper_active_users
+    from .collectors.wh_mapper import (
+        wh_mapper_active_maps,
+        wh_mapper_active_users,
+        wh_mapper_tracked_characters,
+    )
 
     try:
         wh_mapper_active_maps.set(
@@ -26,6 +30,9 @@ def update_wh_mapper_gauges():
         )
         wh_mapper_active_users.set(
             MapPresence.objects.values("user_id").distinct().count()
+        )
+        wh_mapper_tracked_characters.set(
+            TrackedCharacter.objects.filter(is_active=True).count()
         )
     except Exception as e:
         logger.error(e)
